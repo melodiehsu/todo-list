@@ -1,12 +1,16 @@
 <template lang="pug">
-v-card(max-width="100%")
+v-card.mx-auto(max-width="80%")
   v-toolbar(color="black", dark)
     v-app-bar-nav-icon
     v-toolbar-title Settings
     v-spacer
     v-btn(icon)
       v-icon mdi-magnify
-  v-list(subheader, three-line)
+  v-list.overflow-y-auto(
+    subheader,
+    three-line,
+    max-height="50vh"
+  )
     v-subheader User Controls
     v-list-item
       v-list-item-content
@@ -17,7 +21,12 @@ v-card(max-width="100%")
         v-list-item-title Password
         v-list-item-subtitle Require password for purchase or use password to restrict purchase
   v-divider
-  v-list(flat, subheader, three-line)
+  v-list.overflow-y-auto(
+    flat,
+    subheader,
+    three-line,
+    max-height="30vh"
+  )
     v-subheader General
     v-list-item-group(
       v-model="settings",

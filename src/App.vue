@@ -1,7 +1,7 @@
 <template lang="pug">
 v-app
   AppSidebar
-  router-view
+  router-view.flex-grow-1
 </template>
 
 <script>

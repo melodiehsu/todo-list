@@ -1,12 +1,12 @@
 <template lang="pug">
-div
+.d-flex-column.align-self-center
   AddTask
   TodoList
 </template>
 
 <script>
-import TodoList from '../components/todo-list/TodoList.vue';
-import AddTask from '../components/todo-list/AddTask.vue';
+import TodoList from '../components/todo/TodoList.vue';
+import AddTask from '../components/todo/AddTask.vue';
 
 export default {
   name: 'HomeView',
