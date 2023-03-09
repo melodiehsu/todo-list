@@ -16,8 +16,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'vue',
-    'pug'
+    'vue'
   ],
   rules: {
     semi: ['error', 'always'],
@@ -35,13 +34,6 @@ module.exports = {
     'comma-spacing': ['warn', { before: false, after: true }],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'arrow-spacing': ['warn', { before: true, after: true }],
-    'vue/html-indent': ['warn', 2, {
-      attribute: 1,
-      baseIndent: 0,
-      closeBracket: 0,
-      alignAttributesVertically: true,
-      ignores: []
-    }],
     'vue/multi-word-component-names': ['warn', { ignores: [] }],
     'space-infix-ops': ['warn'],
     'vue/mustache-interpolation-spacing': ['error', 'always'],

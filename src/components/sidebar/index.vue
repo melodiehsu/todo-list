@@ -1,5 +1,5 @@
 <template lang="pug">
-.nav-wrapper
+div
   v-navigation-drawer(
     v-model="drawer",
     :mini-variant.sync="mini",
@@ -44,7 +44,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav-wrapper {
-  min-height: 100vh;
-}
 </style>

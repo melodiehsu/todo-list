@@ -21,4 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .v-application--wrap {
+  flex-direction: row;
+}
 </style>
