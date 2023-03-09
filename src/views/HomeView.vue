@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import TheWelcome from '@/components/TheWelcome.vue'
 </script>
 
@@ -6,4 +6,4 @@ import TheWelcome from '@/components/TheWelcome.vue'
   <main>
     <TheWelcome />
   </main>
-</template>
+</template> -->

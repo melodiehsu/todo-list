@@ -4,10 +4,10 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'plugin:vue/vue3-essential',
     'standard',
     'eslint:recommended',
-    'plugin:pug/recommended'
+    'plugin:vue/recommended'
+    // 'plugin:vue-pug/recommended'
   ],
   overrides: [
   ],
@@ -35,8 +35,23 @@ module.exports = {
     'comma-spacing': ['warn', { before: false, after: true }],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'arrow-spacing': ['warn', { before: true, after: true }],
-    'vue/html-indent': ['warn', 2, { alignAttributesVertically: true }],
+    'vue/html-indent': ['warn', 2, {
+      attribute: 1,
+      baseIndent: 0,
+      closeBracket: 0,
+      alignAttributesVertically: true,
+      ignores: []
+    }],
     'vue/multi-word-component-names': ['warn', { ignores: [] }],
-    'space-infix-ops': ['warn']
+    'space-infix-ops': ['warn'],
+    'vue/mustache-interpolation-spacing': ['error', 'always'],
+    'vue/max-attributes-per-line': ['warn', {
+      singleline: {
+        max: 1
+      },
+      multiline: {
+        max: 1
+      }
+    }]
   }
 };
