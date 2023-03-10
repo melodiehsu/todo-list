@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   v-navigation-drawer(
-    v-model="drawer",
+    v-model="isCollapsed",
     :mini-variant.sync="mini",
     permanent
   )
@@ -10,7 +10,7 @@ div
         icon,
         @click.stop="mini = !mini"
       )
-        v-icon(v-if="mini") mdi-chevron-right {{ drawer }}
+        v-icon(v-if="mini") mdi-chevron-right
         v-icon(v-else) mdi-chevron-left
     v-divider
     v-list(dense)
@@ -30,11 +30,11 @@ export default {
   name: 'AppSidebar',
   data () {
     return {
-      drawer: true,
+      isCollapsed: true,
       items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'My Account', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' }
+        { title: 'Todo', icon: 'mdi-format-list-bulleted-square' },
+        { title: 'Done', icon: 'mdi-check' },
+        { title: 'Tags', icon: 'mdi-tag-multiple' }
       ],
       mini: true
     };

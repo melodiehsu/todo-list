@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../views/HomeView.vue';
 
 Vue.use(VueRouter);
 
@@ -11,15 +10,22 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      redirect: '/todos'
     },
     {
-      path: '/today',
-      name: 'today'
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      // component: () => import('../views/AboutView.vue')
+      path: '/todos',
+      name: 'todo-list',
+      component: () => import('../views/todo/index.vue')
+    },
+    {
+      path: '/dones',
+      name: 'done-list',
+      component: () => import('../views/done/index.vue')
+    },
+    {
+      path: '/tags',
+      name: 'tag-list',
+      component: () => import('../views/tag/index.vue')
     }
   ]
 });

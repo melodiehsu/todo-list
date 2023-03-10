@@ -145,12 +145,11 @@ v-card.mx-auto(max-width="80%")
 
 <script>
 export default {
-  name: 'TodoList',
-  //  components: {},
-  //  props: {}
+//  name: '',
+//  components: {},
+//  props: {}
   data () {
     return {
-      settings: []
     };
   },
   methods: {

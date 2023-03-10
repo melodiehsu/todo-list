@@ -34,7 +34,7 @@ module.exports = {
     'comma-spacing': ['warn', { before: false, after: true }],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'arrow-spacing': ['warn', { before: true, after: true }],
-    'vue/multi-word-component-names': ['warn', { ignores: [] }],
+    'vue/multi-word-component-names': ['warn', { ignores: ['List', 'Create', 'index'] }],
     'space-infix-ops': ['warn'],
     'vue/mustache-interpolation-spacing': ['error', 'always'],
     'vue/max-attributes-per-line': ['warn', {
