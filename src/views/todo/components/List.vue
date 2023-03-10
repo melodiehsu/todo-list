@@ -1,161 +1,72 @@
 <template lang="pug">
-v-card.mx-auto(max-width="80%")
+v-card.mx-auto(width="70%")
   v-toolbar(color="black", dark)
     v-app-bar-nav-icon
-    v-toolbar-title Settings
+    v-toolbar-title Todo
     v-spacer
-    v-btn(icon)
-      v-icon mdi-magnify
+
   v-list.overflow-y-auto(
-    subheader,
-    three-line,
-    max-height="50vh"
+    max-height="70vh",
+    flat
   )
-    v-subheader User Controls
-    v-list-item
-      v-list-item-content
-        v-list-item-title Content filtering
-        v-list-item-subtitle Set the content filtering level to restrict appts that can be downloaded
-    v-list-item
-      v-list-item-content
-        v-list-item-title Password
-        v-list-item-subtitle Require password for purchase or use password to restrict purchase
-  v-divider
-  v-list.overflow-y-auto(
-    flat,
-    subheader,
-    three-line,
-    max-height="30vh"
-  )
-    v-subheader General
     v-list-item-group(
-      v-model="settings",
-      multiple,
-      active-class
+      active-class,
+      mandatory
     )
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Notifications
-            v-list-item-subtitle Notify me about updates to apps or games that I downloaded
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Sound
-            v-list-item-subtitle Auto-update apps at any time. Data charges may apply
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-            v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
-      v-list-item
-        template(#default="{ active }")
-          v-list-item-action
-            v-checkbox(
-              :input-value="active"
-            )
-          v-list-item-content
-            v-list-item-title Auto-add widgets
-            v-list-item-subtitle Automatically add home screen widgets when downloads completedd home screen widgets when downloads complete
+      div(
+        v-if="todoTasks.length !== 0"
+      )
+        v-list-item(
+          v-for="todoTask in todoTasks",
+          :key="todoTask.id"
+        )
+          template(
+            #default="{ active }"
+          )
+            v-list-item-action
+              v-checkbox(
+                :input-value="todoTask.isDone"
+              )
+            v-list-item-content
+              .todo-task {{ todoTask.value }}
+              v-list-item-subtitle {{ todoTask.tag }}
+            v-list-item-action
+              v-btn(
+                icon,
+                outlined,
+                small,
+                @click="deleteTask(todoTask.id)"
+              )
+                v-icon(size="18") mdi-trash-can
+      div(v-else)
+        v-card-subtitle There is nothing left to do! Congrats!
 </template>
 
 <script>
 export default {
-//  name: '',
-//  components: {},
-//  props: {}
-  data () {
+  data() {
     return {
     };
   },
+  computed: {
+    todoTasks() {
+      return this.$store.state.todoTasks;
+    }
+  },
   methods: {
+    deleteTask(taskId) {
+      this.$store.dispatch('deleteTask', taskId);
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.todo-task {
+  overflow: auto;
+}
+
+.v-card__subtitle {
+  text-align: center;
+}
 </style>

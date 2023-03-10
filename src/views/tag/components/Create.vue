@@ -1,8 +1,8 @@
 <template lang="pug">
-v-card.mx-auto.mb-10(max-width="80%")
+v-card.mx-auto.mb-10(width="70%")
   .d-flex.align-end
     v-text-field(
-      v-model="message",
+      v-model="taskValue",
       label="Add a task",
       hide-details="auto"
     )
@@ -11,17 +11,16 @@ v-card.mx-auto.mb-10(max-width="80%")
 
 <script>
 export default {
-  name: 'AddTask',
   //  components: {},
   //  props: {}
-  data () {
+  data() {
     return {
-      message: ''
+      taskValue: ''
     };
   },
   watch: {
-    message (newVal) {
-      console.log('message', newVal);
+    taskValue(newVal) {
+      console.log('taskValue', newVal);
     }
   },
   methods: {

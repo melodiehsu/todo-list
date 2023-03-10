@@ -1,5 +1,5 @@
 <template lang="pug">
-.d-flex-column.align-self-center
+section
   Create
   List
 </template>
@@ -23,4 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 </style>

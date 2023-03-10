@@ -10,15 +10,15 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      redirect: '/todos'
+      redirect: '/todo-tasks'
     },
     {
-      path: '/todos',
+      path: '/todo-tasks',
       name: 'todo-list',
       component: () => import('../views/todo/index.vue')
     },
     {
-      path: '/dones',
+      path: '/done-tasks',
       name: 'done-list',
       component: () => import('../views/done/index.vue')
     },

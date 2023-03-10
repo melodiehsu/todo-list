@@ -1,34 +1,43 @@
 <template lang="pug">
-v-card.mx-auto.mb-10(max-width="80%")
+v-card.mx-auto.mb-10(width="70%")
   .d-flex.align-end
     v-text-field(
-      v-model="message",
+      v-model="taskValue",
       label="Add a task",
-      hide-details="auto"
+      hide-details="auto",
+      @keyup.enter="addTask"
     )
-    v-btn add
+    v-btn(@click="addTask") add
 </template>
 
 <script>
 export default {
-  //  components: {},
-  //  props: {}
-  data () {
+  data() {
     return {
-      message: ''
+      taskValue: ''
     };
   },
-  watch: {
-    message (newVal) {
-      console.log('message', newVal);
-    }
-  },
   methods: {
+    clearTaskValue() {
+      this.taskValue = '';
+    },
+    addTask() {
+      if (this.taskValue === '') return;
+
+      this.$store.dispatch('addTask', {
+        id: this.$store.state.todoId++,
+        value: this.taskValue,
+        tag: 'aaa',
+        isDone: false
+      });
+
+      this.clearTaskValue();
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+  <style lang="scss" scoped>
 .v-card {
   padding: 10px;
 }
@@ -37,3 +46,4 @@ export default {
   margin-right: 10px;
 }
 </style>
+

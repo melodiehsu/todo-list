@@ -1,7 +1,8 @@
 <template lang="pug">
 v-app
   AppSidebar
-  router-view.flex-grow-1
+  v-main
+    router-view
 </template>
 
 <script>
@@ -21,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep .v-application--wrap {
-  flex-direction: row;
+.v-main {
+  min-height: 100vh;
 }
 </style>

@@ -44,6 +44,11 @@ module.exports = {
       multiline: {
         max: 1
       }
+    }],
+    'space-before-function-paren': ['error', {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always'
     }]
   }
 };
