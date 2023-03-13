@@ -30,7 +30,6 @@ v-card.mx-auto(width="70%")
               )
             v-list-item-content
               .todo-task {{ todoTask.value }}
-              v-list-item-subtitle {{ todoTask.tag }}
             v-list-item-action
               v-btn(
                 icon,
