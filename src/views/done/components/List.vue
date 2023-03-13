@@ -1,7 +1,6 @@
 <template lang="pug">
 v-card.mx-auto(width="70%")
   v-toolbar(color="black", dark)
-    v-app-bar-nav-icon
     v-toolbar-title Done
     v-spacer
 
@@ -41,7 +40,7 @@ v-card.mx-auto(width="70%")
               )
                 v-icon(size="18") mdi-trash-can
       div(v-else)
-        v-card-subtitle You have not done any task yet🥲
+        v-card-subtitle You have not done any task yet 🥲
 </template>
 
 <script>
@@ -63,13 +62,13 @@ export default {
       this.$store.dispatch('deleteTask', taskId);
       setTasks();
 
-      showDangerousToast('You have deleted a task!');
+      showDangerousToast('You have deleted a task! 😨');
     },
     restoreDoneTask(taskId) {
       this.$store.dispatch('restoreDoneTask', taskId);
       setTasks();
 
-      showWarningToast('You have restored a task!');
+      showWarningToast('You have restored a task! 🤥');
     }
   }
 };

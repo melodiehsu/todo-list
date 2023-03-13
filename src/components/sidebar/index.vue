@@ -47,11 +47,6 @@ export default {
           title: 'Done',
           icon: 'mdi-check',
           path: '/done-tasks'
-        },
-        {
-          title: 'Tags',
-          icon: 'mdi-tag-multiple',
-          path: '/tags'
         }
       ]
     };

@@ -21,11 +21,6 @@ const router = new VueRouter({
       path: '/done-tasks',
       name: 'done-list',
       component: () => import('../views/done/index.vue')
-    },
-    {
-      path: '/tags',
-      name: 'tag-list',
-      component: () => import('../views/tag/index.vue')
     }
   ]
 });

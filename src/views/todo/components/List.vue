@@ -1,7 +1,6 @@
 <template lang="pug">
 v-card.mx-auto(width="70%")
   v-toolbar(color="black", dark)
-    v-app-bar-nav-icon
     v-toolbar-title Todo
     v-spacer
 
@@ -41,7 +40,7 @@ v-card.mx-auto(width="70%")
               )
                 v-icon(size="18") mdi-trash-can
       div(v-else)
-        v-card-subtitle There is nothing left to do! Congrats!
+        v-card-subtitle There is nothing left to do! Congrats! 🥳
 </template>
 
 <script>
@@ -62,17 +61,17 @@ export default {
       this.$store.dispatch('deleteTask', taskId);
       setTasks();
 
-      showDangerousToast('You have deleted a task!');
+      showDangerousToast('You have deleted a task! 😨');
     },
     didTask(taskId) {
       this.$store.dispatch('didTask', taskId);
       setTasks();
 
-      showSuccessfulToast('You have done a task!');
+      showSuccessfulToast('You have done a task! 👏🏻👏🏻👏🏻');
     }
   }
 };
-</script>
+</script>😰
 
 <style lang="scss" scoped>
 .todo-task {

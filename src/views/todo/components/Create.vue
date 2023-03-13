@@ -29,7 +29,6 @@ export default {
       this.$store.dispatch('addTask', {
         id: this.$store.state.currentTaskId++,
         value: this.taskValue,
-        tag: 'aaa',
         isDone: false
       });
 
