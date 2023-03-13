@@ -3,20 +3,28 @@ v-app
   AppSidebar
   v-main
     router-view
+    Notification
 </template>
 
 <script>
 import AppSidebar from '@/components/sidebar/index.vue';
+import Notification from '@/components/toast/index.vue';
 
 export default {
   components: {
-    AppSidebar
+    AppSidebar,
+    Notification
   },
-  data () {
+  data() {
     return {
     };
   },
-  methods: {
+  mounted() {
+    if (!localStorage.tasks) return;
+
+    const currentTaskId = JSON.parse(localStorage.currentTaskId);
+    const tasks = JSON.parse(localStorage.tasks);
+    this.$store.dispatch('initState', { currentTaskId, tasks });
   }
 };
 </script>

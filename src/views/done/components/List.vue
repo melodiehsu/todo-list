@@ -2,11 +2,11 @@
 v-card.mx-auto(width="70%")
   v-toolbar(color="black", dark)
     v-app-bar-nav-icon
-    v-toolbar-title Todo
+    v-toolbar-title Done
     v-spacer
 
   v-list.overflow-y-auto(
-    min-height="40vh",
+    min-height="50vh",
     max-height="70vh",
     flat
   )
@@ -15,46 +15,47 @@ v-card.mx-auto(width="70%")
       mandatory
     )
       div(
-        v-if="todoTasks && todoTasks.length !== 0"
+        v-if="doneTasks && doneTasks.length !== 0"
       )
         v-list-item(
-          v-for="todoTask in todoTasks",
-          :key="todoTask.id"
+          v-for="doneTask in doneTasks",
+          :key="doneTask.id"
         )
           template(
             #default="{ active }"
           )
             v-list-item-action
               v-checkbox(
-                :input-value="todoTask.isDone",
-                @click="didTask(todoTask.id)"
+                :input-value="doneTask.isDone",
+                @click="restoreDoneTask(doneTask.id)"
               )
             v-list-item-content
-              .todo-task {{ todoTask.value }}
-              v-list-item-subtitle {{ todoTask.tag }}
+              .done-task.text-decoration-line-through {{ doneTask.value }}
+              v-list-item-subtitle {{ doneTask.tag }}
             v-list-item-action
               v-btn(
                 icon,
                 outlined,
                 small,
-                @click="deleteTask(todoTask.id)"
+                @click="deleteTask(doneTask.id)"
               )
                 v-icon(size="18") mdi-trash-can
       div(v-else)
-        v-card-subtitle There is nothing left to do! Congrats!
+        v-card-subtitle You have not done any task yet🥲
 </template>
 
 <script>
 import { setTasks } from '../../../utils/local-storage';
-import { showDangerousToast, showSuccessfulToast } from '../../../utils/toast';
+import { showDangerousToast, showWarningToast } from '../../../utils/toast';
 
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   computed: {
-    todoTasks() {
-      return this.$store.getters.todoTasks;
+    doneTasks() {
+      return this.$store.getters.doneTasks;
     }
   },
   methods: {
@@ -64,18 +65,18 @@ export default {
 
       showDangerousToast('You have deleted a task!');
     },
-    didTask(taskId) {
-      this.$store.dispatch('didTask', taskId);
+    restoreDoneTask(taskId) {
+      this.$store.dispatch('restoreDoneTask', taskId);
       setTasks();
 
-      showSuccessfulToast('You have done a task!');
+      showWarningToast('You have restored a task!');
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.todo-task {
+.done-task {
   overflow: auto;
 }
 

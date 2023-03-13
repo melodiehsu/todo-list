@@ -33,7 +33,7 @@ v-navigation-drawer(
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       isCollapsed: true,
       currentPage: 0,
